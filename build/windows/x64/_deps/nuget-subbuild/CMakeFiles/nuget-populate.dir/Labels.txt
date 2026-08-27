@@ -1,0 +1,15 @@
+# Target labels
+ nuget-populate
+# Source files and their labels
+C:/Users/godoy/for her/for_her/build/windows/x64/_deps/nuget-subbuild/CMakeFiles/nuget-populate
+C:/Users/godoy/for her/for_her/build/windows/x64/_deps/nuget-subbuild/CMakeFiles/add9a4f6a1771a4a813a5ae6e5c469ed/nuget-populate.rule
+C:/Users/godoy/for her/for_her/build/windows/x64/_deps/nuget-subbuild/CMakeFiles/628334ef9e757c2a6e6c265b25e0fc66/nuget-populate-complete.rule
+C:/Users/godoy/for her/for_her/build/windows/x64/_deps/nuget-subbuild/CMakeFiles/d5d644a860eb69493976cf63d1523ce7/nuget-populate-build.rule
+C:/Users/godoy/for her/for_her/build/windows/x64/_deps/nuget-subbuild/CMakeFiles/d5d644a860eb69493976cf63d1523ce7/nuget-populate-configure.rule
+C:/Users/godoy/for her/for_her/build/windows/x64/_deps/nuget-subbuild/CMakeFiles/d5d644a860eb69493976cf63d1523ce7/nuget-populate-copyfile.rule
+C:/Users/godoy/for her/for_her/build/windows/x64/_deps/nuget-subbuild/CMakeFiles/d5d644a860eb69493976cf63d1523ce7/nuget-populate-download.rule
+C:/Users/godoy/for her/for_her/build/windows/x64/_deps/nuget-subbuild/CMakeFiles/d5d644a860eb69493976cf63d1523ce7/nuget-populate-install.rule
+C:/Users/godoy/for her/for_her/build/windows/x64/_deps/nuget-subbuild/CMakeFiles/d5d644a860eb69493976cf63d1523ce7/nuget-populate-mkdir.rule
+C:/Users/godoy/for her/for_her/build/windows/x64/_deps/nuget-subbuild/CMakeFiles/d5d644a860eb69493976cf63d1523ce7/nuget-populate-patch.rule
+C:/Users/godoy/for her/for_her/build/windows/x64/_deps/nuget-subbuild/CMakeFiles/d5d644a860eb69493976cf63d1523ce7/nuget-populate-test.rule
+C:/Users/godoy/for her/for_her/build/windows/x64/_deps/nuget-subbuild/CMakeFiles/d5d644a860eb69493976cf63d1523ce7/nuget-populate-update.rule

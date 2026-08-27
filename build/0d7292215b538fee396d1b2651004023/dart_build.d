@@ -1,0 +1,1 @@
+ C:\\Users\\godoy\\for\ her\\for_her\\build\\0d7292215b538fee396d1b2651004023\\dart_build_result.json:  C:\\Users\\godoy\\for\ her\\for_her\\.dart_tool\\package_config.json C:\\Users\\godoy\\for\ her\\for_her\\pubspec.yaml C:\\src\\flutter\\bin\\cache\\dart-sdk\\version c:\\users\\godoy\\for\ her\\for_her\\.dart_tool\\package_config.json

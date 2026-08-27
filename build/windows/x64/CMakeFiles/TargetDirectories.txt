@@ -1,0 +1,17 @@
+C:/Users/godoy/for her/for_her/build/windows/x64/CMakeFiles/INSTALL.dir
+C:/Users/godoy/for her/for_her/build/windows/x64/CMakeFiles/ALL_BUILD.dir
+C:/Users/godoy/for her/for_her/build/windows/x64/CMakeFiles/ZERO_CHECK.dir
+C:/Users/godoy/for her/for_her/build/windows/x64/flutter/CMakeFiles/flutter_wrapper_plugin.dir
+C:/Users/godoy/for her/for_her/build/windows/x64/flutter/CMakeFiles/flutter_wrapper_app.dir
+C:/Users/godoy/for her/for_her/build/windows/x64/flutter/CMakeFiles/flutter_assemble.dir
+C:/Users/godoy/for her/for_her/build/windows/x64/flutter/CMakeFiles/INSTALL.dir
+C:/Users/godoy/for her/for_her/build/windows/x64/runner/CMakeFiles/for_her.dir
+C:/Users/godoy/for her/for_her/build/windows/x64/runner/CMakeFiles/INSTALL.dir
+C:/Users/godoy/for her/for_her/build/windows/x64/runner/CMakeFiles/ALL_BUILD.dir
+C:/Users/godoy/for her/for_her/build/windows/x64/plugins/audioplayers_windows/CMakeFiles/audioplayers_windows_plugin.dir
+C:/Users/godoy/for her/for_her/build/windows/x64/plugins/audioplayers_windows/CMakeFiles/INSTALL.dir
+C:/Users/godoy/for her/for_her/build/windows/x64/plugins/audioplayers_windows/CMakeFiles/ALL_BUILD.dir
+C:/Users/godoy/for her/for_her/build/windows/x64/plugins/jni/CMakeFiles/INSTALL.dir
+C:/Users/godoy/for her/for_her/build/windows/x64/plugins/jni/CMakeFiles/ALL_BUILD.dir
+C:/Users/godoy/for her/for_her/build/windows/x64/plugins/jni/shared/CMakeFiles/INSTALL.dir
+C:/Users/godoy/for her/for_her/build/windows/x64/plugins/jni/shared/CMakeFiles/ALL_BUILD.dir

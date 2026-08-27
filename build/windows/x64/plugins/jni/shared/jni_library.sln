@@ -1,0 +1,47 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 18
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ALL_BUILD", "ALL_BUILD.vcxproj", "{314055E5-30D8-3B77-A94C-CF92F8751A63}"
+	ProjectSection(ProjectDependencies) = postProject
+		{47563940-2E71-3663-A83C-5F20898A86E6} = {47563940-2E71-3663-A83C-5F20898A86E6}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "INSTALL", "INSTALL.vcxproj", "{ADAC7E1E-BCAD-3F8F-8942-84C875346BC6}"
+	ProjectSection(ProjectDependencies) = postProject
+		{314055E5-30D8-3B77-A94C-CF92F8751A63} = {314055E5-30D8-3B77-A94C-CF92F8751A63}
+		{47563940-2E71-3663-A83C-5F20898A86E6} = {47563940-2E71-3663-A83C-5F20898A86E6}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ZERO_CHECK", "..\..\..\\ZERO_CHECK.vcxproj", "{47563940-2E71-3663-A83C-5F20898A86E6}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Profile|x64 = Profile|x64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{314055E5-30D8-3B77-A94C-CF92F8751A63}.Debug|x64.ActiveCfg = Debug|x64
+		{314055E5-30D8-3B77-A94C-CF92F8751A63}.Debug|x64.Build.0 = Debug|x64
+		{314055E5-30D8-3B77-A94C-CF92F8751A63}.Profile|x64.ActiveCfg = Profile|x64
+		{314055E5-30D8-3B77-A94C-CF92F8751A63}.Profile|x64.Build.0 = Profile|x64
+		{314055E5-30D8-3B77-A94C-CF92F8751A63}.Release|x64.ActiveCfg = Release|x64
+		{314055E5-30D8-3B77-A94C-CF92F8751A63}.Release|x64.Build.0 = Release|x64
+		{ADAC7E1E-BCAD-3F8F-8942-84C875346BC6}.Debug|x64.ActiveCfg = Debug|x64
+		{ADAC7E1E-BCAD-3F8F-8942-84C875346BC6}.Profile|x64.ActiveCfg = Profile|x64
+		{ADAC7E1E-BCAD-3F8F-8942-84C875346BC6}.Release|x64.ActiveCfg = Release|x64
+		{47563940-2E71-3663-A83C-5F20898A86E6}.Debug|x64.ActiveCfg = Debug|x64
+		{47563940-2E71-3663-A83C-5F20898A86E6}.Debug|x64.Build.0 = Debug|x64
+		{47563940-2E71-3663-A83C-5F20898A86E6}.Profile|x64.ActiveCfg = Profile|x64
+		{47563940-2E71-3663-A83C-5F20898A86E6}.Profile|x64.Build.0 = Profile|x64
+		{47563940-2E71-3663-A83C-5F20898A86E6}.Release|x64.ActiveCfg = Release|x64
+		{47563940-2E71-3663-A83C-5F20898A86E6}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {50280030-8A88-3B03-8490-21CEB090ECE1}
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

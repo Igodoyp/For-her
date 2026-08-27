@@ -1,0 +1,3 @@
+C:/Users/godoy/for her/for_her/build/windows/x64/_deps/nuget-subbuild/CMakeFiles/nuget-populate.dir
+C:/Users/godoy/for her/for_her/build/windows/x64/_deps/nuget-subbuild/CMakeFiles/ALL_BUILD.dir
+C:/Users/godoy/for her/for_her/build/windows/x64/_deps/nuget-subbuild/CMakeFiles/ZERO_CHECK.dir
