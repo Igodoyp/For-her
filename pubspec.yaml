@@ -1,0 +1,36 @@
+name: anniversary_app
+description: A new Flutter project.
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  
+  # Manejo de música y el sonido de la voz
+  audioplayers: ^6.0.0 
+  
+  # Para la fuente pixelada (ej. Press Start 2P)
+  google_fonts: ^6.2.1 
+  
+  # Para el efecto de máquina de escribir de Undertale
+  animated_text_kit: ^4.2.2 
+
+  cupertino_icons: ^1.0.6
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+
+flutter:
+  uses-material-design: true
+
+  # Aquí habilitas las carpetas para tu sprite y las canciones
+  assets:
+    - assets/images/
+    - assets/audio/
