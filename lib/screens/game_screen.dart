@@ -952,71 +952,106 @@ class _GameScreenState extends State<GameScreen> {
     final coverSize = (screenSize.width * 0.38).clamp(112.0, 200.0).toDouble();
 
     return Scaffold(
+      backgroundColor: Colors.black,
       body: SafeArea(
-        child: Stack(
-          children: [
-            GestureDetector(
-              onTap: _handleTap,
-              behavior: HitTestBehavior.opaque, 
-              child: Column(
+        child: Container(
+          color: Colors.black,
+          child: Center(
+            child: ConstrainedBox(
+              constraints: const BoxConstraints(maxWidth: 430),
+              child: Stack(
                 children: [
-                  const Spacer(flex: 2), 
-                  SpriteViewer(imagePath: currentScene.spritePath),
-                  const Spacer(flex: 1), 
-                  DialogBox(
-                    key: _dialogKey, 
-                    text: currentScene.text
+                  Positioned.fill(
+                    child: Container(
+                      margin: const EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(28),
+                        border: Border.all(color: Colors.white.withOpacity(0.1), width: 1),
+                      ),
+                    ),
                   ),
-                  const SizedBox(height: 20), 
+                  GestureDetector(
+                    onTap: _handleTap,
+                    behavior: HitTestBehavior.opaque,
+                    child: Padding(
+                      padding: const EdgeInsets.fromLTRB(16, 12, 16, 16),
+                      child: Column(
+                        children: [
+                          const SizedBox(height: 8),
+                          Expanded(
+                            child: Center(
+                              child: Container(
+                                padding: const EdgeInsets.all(16),
+                                decoration: BoxDecoration(
+                                  color: Colors.black.withOpacity(0.16),
+                                  borderRadius: BorderRadius.circular(24),
+                                ),
+                                child: SpriteViewer(imagePath: currentScene.spritePath),
+                              ),
+                            ),
+                          ),
+                          DialogBox(
+                            key: _dialogKey,
+                            text: currentScene.text,
+                          ),
+                          const SizedBox(height: 12),
+                        ],
+                      ),
+                    ),
+                  ),
+
+                  if (_currentCoverPath != null)
+                    Positioned(
+                      top: 18,
+                      left: 18,
+                      child: Container(
+                        width: coverSize,
+                        height: coverSize,
+                        decoration: BoxDecoration(
+                          color: const Color(0xFF111111),
+                          border: Border.all(color: const Color(0xFFE53935), width: 2.5),
+                          borderRadius: BorderRadius.circular(14),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withOpacity(0.45),
+                              blurRadius: 10,
+                              offset: const Offset(2, 4),
+                            ),
+                          ],
+                        ),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(12),
+                          child: Image.asset(
+                            _currentCoverPath!,
+                            fit: BoxFit.cover,
+                            filterQuality: FilterQuality.none,
+                          ),
+                        ),
+                      ),
+                    ),
+
+                  Positioned(
+                    top: 18,
+                    right: 18,
+                    child: IconButton(
+                      onPressed: _skipToNextPart,
+                      tooltip: 'Saltar a la siguiente parte',
+                      icon: const Icon(Icons.skip_next_rounded),
+                      style: TextButton.styleFrom(
+                        foregroundColor: Colors.white,
+                        backgroundColor: Colors.black.withOpacity(0.75),
+                        side: const BorderSide(color: Color(0xFFE53935), width: 1.5),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        padding: const EdgeInsets.all(10),
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),
-            
-            // Renderizamos la portada en la esquina superior izquierda si existe
-            if (_currentCoverPath != null)
-              Positioned(
-                top: 12,
-                left: 12,
-                child: Container(
-                  width: coverSize,
-                  height: coverSize,
-                  decoration: BoxDecoration(
-                    color: const Color(0xFF111111),
-                    border: Border.all(color: Colors.white, width: 3.0),
-                    boxShadow: const [
-                      BoxShadow(
-                        color: Colors.black54,
-                        blurRadius: 8,
-                        offset: Offset(3, 3),
-                      ),
-                    ],
-                  ),
-                  child: Image.asset(
-                    _currentCoverPath!,
-                    fit: BoxFit.contain,
-                    filterQuality: FilterQuality.none, // Mantiene todo nítido
-                  ),
-                ),
-              ),
-
-            Positioned(
-              top: 10,
-              right: 10,
-              child: IconButton(
-                onPressed: _skipToNextPart,
-                tooltip: 'Saltar a la siguiente parte',
-                icon: const Icon(Icons.skip_next_rounded),
-                style: TextButton.styleFrom(
-                  foregroundColor: Colors.white,
-                  backgroundColor: Colors.black87,
-                  side: const BorderSide(color: Colors.white, width: 1.5),
-                  shape: const RoundedRectangleBorder(
-                    borderRadius: BorderRadius.zero,
-                  ),
-                ),
-              ),
-            ),
-          ],
+          ),
         ),
       ),
     );

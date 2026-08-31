@@ -82,20 +82,31 @@ class DialogBoxState extends State<DialogBox> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 20.0),
-      padding: const EdgeInsets.all(24.0),
-      height: 160,
+      margin: const EdgeInsets.symmetric(horizontal: 14.0, vertical: 18.0),
+      padding: const EdgeInsets.all(18.0),
+      constraints: const BoxConstraints(minHeight: 140, maxHeight: 190),
       width: double.infinity,
       decoration: BoxDecoration(
-        color: Colors.black,
-        border: Border.all(color: Colors.white, width: 6.0),
+        color: const Color(0xFF120909),
+        borderRadius: BorderRadius.circular(18.0),
+        border: Border.all(color: const Color(0xFFE53935), width: 4.0),
+        boxShadow: [
+          BoxShadow(
+            color: const Color(0xFFE53935).withOpacity(0.2),
+            blurRadius: 12,
+            spreadRadius: 1,
+          ),
+        ],
       ),
-      child: Text(
-        _displayedText,
-        style: const TextStyle(
-          fontSize: 26.0,
-          color: Colors.white,
-          height: 1.3,
+      child: SingleChildScrollView(
+        child: Text(
+          _displayedText,
+          style: const TextStyle(
+            fontSize: 22.0,
+            color: Colors.white,
+            height: 1.35,
+            letterSpacing: 0.3,
+          ),
         ),
       ),
     );
