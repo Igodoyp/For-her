@@ -59,8 +59,7 @@ class DialogBoxState extends State<DialogBox> {
 
         if (char != ' ' && char != '\n') {
           try {
-            // Quitamos el stop() previo, solo disparamos play()
-            AudioManager.blipPlayer.play(AssetSource('audio/voz_blip.wav')); 
+            await AudioManager.playBlip();
           } catch (_) {
             // Try-catch evita que la animación de texto se congele si iOS rechaza un frame de audio
           }
