@@ -5,6 +5,7 @@ import 'package:audioplayers/audioplayers.dart';
 import '../models/scene_model.dart';
 import '../widgets/dialog_box.dart';
 import '../widgets/sprite_viewer.dart';
+import '../audio_manager.dart';
 
 class GameScreen extends StatefulWidget {
   const GameScreen({super.key});
@@ -863,12 +864,51 @@ class _GameScreenState extends State<GameScreen> {
     }
   }
 
+  int _findSkipTargetIndex() {
+    if (_currentIndex >= _scenes.length - 1) {
+      return _scenes.length - 1;
+    }
+
+    final currentScene = _scenes[_currentIndex];
+    final bool isInSongBlock = currentScene.audioPath != null;
+
+    for (int i = _currentIndex + 1; i < _scenes.length; i++) {
+      final scene = _scenes[i];
+
+      if (isInSongBlock) {
+        if (scene.stopMusic) {
+          return i + 1 < _scenes.length ? i + 1 : _scenes.length - 1;
+        }
+        if (scene.audioPath != null) {
+          return i;
+        }
+      } else if (scene.audioPath != null) {
+        return i;
+      }
+    }
+
+    return _scenes.length - 1;
+  }
+
+  void _skipToNextPart() {
+    final targetIndex = _findSkipTargetIndex();
+
+    if (targetIndex == _currentIndex) {
+      _nextScene();
+      return;
+    }
+
+    setState(() {
+      _currentIndex = targetIndex;
+    });
+    _setupScene();
+  }
+
   void _setupScene() async {
     final scene = _scenes[_currentIndex];
     
     if (scene.stopMusic) {
-      await _musicPlayer.stop();
-      // Si se detiene la música, escondemos la portada
+      await AudioManager.musicPlayer.stop();
       setState(() {
         _currentCoverPath = null;
       });
@@ -876,17 +916,16 @@ class _GameScreenState extends State<GameScreen> {
     
     if (scene.audioPath != null) {
       try {
-        await _musicPlayer.stop(); 
-        await _musicPlayer.play(AssetSource(scene.audioPath!));
+        // En lugar de stop() y play(), solo play(). El paquete reemplaza el track activo.
+        await AudioManager.musicPlayer.play(AssetSource(scene.audioPath!));
         
-        // Si la escena tiene una portada, la guardamos en el estado
         if (scene.coverPath != null) {
           setState(() {
             _currentCoverPath = scene.coverPath;
           });
         }
       } catch (error) {
-        debugPrint('No se pudo reproducir ${scene.audioPath}: $error');
+        debugPrint('Error: $error');
       }
     }
 
@@ -899,17 +938,10 @@ class _GameScreenState extends State<GameScreen> {
     }
   }
 
-  void _stopMusic() async {
-    await _musicPlayer.stop();
-    setState(() {
-      _currentCoverPath = null; // Botón manual también esconde la portada
-    });
-  }
-
   @override
   void dispose() {
     _autoAdvanceTimer?.cancel(); 
-    _musicPlayer.dispose();
+    // Tampoco hacemos dispose del musicPlayer aquí
     super.dispose();
   }
 
@@ -971,9 +1003,9 @@ class _GameScreenState extends State<GameScreen> {
               top: 10,
               right: 10,
               child: IconButton(
-                onPressed: _stopMusic,
-                tooltip: 'Silenciar canción',
-                icon: const Icon(Icons.volume_off_rounded),
+                onPressed: _skipToNextPart,
+                tooltip: 'Saltar a la siguiente parte',
+                icon: const Icon(Icons.skip_next_rounded),
                 style: TextButton.styleFrom(
                   foregroundColor: Colors.white,
                   backgroundColor: Colors.black87,

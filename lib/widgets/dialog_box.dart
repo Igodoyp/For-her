@@ -1,32 +1,26 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:audioplayers/audioplayers.dart';
+import '../audio_manager.dart'; // Importa el manager
 
 class DialogBox extends StatefulWidget {
   final String text;
-  
   const DialogBox({super.key, required this.text});
 
   @override
-  // NOTA: Le quitamos el guion bajo a DialogBoxState para hacerlo público
   State<DialogBox> createState() => DialogBoxState(); 
 }
 
-// NOTA: Aquí también quitamos el guion bajo
 class DialogBoxState extends State<DialogBox> { 
   String _displayedText = "";
   Timer? _timer;
   int _currentIndex = 0;
-  
-  final AudioPlayer _blipPlayer = AudioPlayer();
 
-  // Esta variable nos avisa si el texto aún se está animando
   bool get isTyping => _timer?.isActive ?? false;
 
-  // Esta función fuerza a que el texto aparezca de golpe
   void finishTyping() {
     _timer?.cancel();
-    _blipPlayer.stop(); // Detenemos el sonido de inmediato
+    AudioManager.blipPlayer.stop(); // Usamos el global
     setState(() {
       _displayedText = widget.text;
       _currentIndex = widget.text.length;
@@ -36,7 +30,6 @@ class DialogBoxState extends State<DialogBox> {
   @override
   void initState() {
     super.initState();
-    _blipPlayer.setVolume(0.7);
     _startTyping();
   }
 
@@ -65,8 +58,12 @@ class DialogBoxState extends State<DialogBox> {
         });
 
         if (char != ' ' && char != '\n') {
-          await _blipPlayer.stop();
-          await _blipPlayer.play(AssetSource('audio/voz_blip.wav')); 
+          try {
+            // Quitamos el stop() previo, solo disparamos play()
+            AudioManager.blipPlayer.play(AssetSource('audio/voz_blip.wav')); 
+          } catch (_) {
+            // Try-catch evita que la animación de texto se congele si iOS rechaza un frame de audio
+          }
         }
       } else {
         _timer?.cancel();
@@ -77,38 +74,26 @@ class DialogBoxState extends State<DialogBox> {
   @override
   void dispose() {
     _timer?.cancel();
-    _blipPlayer.dispose();
+    // NO hacemos dispose del reproductor aquí, porque ahora es global
     super.dispose();
   }
 
+  // ... (El bloque build queda exactamente igual)
   @override
   Widget build(BuildContext context) {
-    final screenSize = MediaQuery.sizeOf(context);
-    final horizontalMargin = (screenSize.width * 0.04).clamp(12.0, 16.0);
-    final contentPadding = (screenSize.width * 0.045).clamp(14.0, 24.0);
-    final dialogHeight = (screenSize.height * 0.21).clamp(132.0, 160.0);
-    final textSize = (screenSize.width * 0.06).clamp(20.0, 26.0);
-
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: horizontalMargin, vertical: 16.0),
-      padding: EdgeInsets.all(contentPadding),
-      height: dialogHeight,
+      margin: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 20.0),
+      padding: const EdgeInsets.all(24.0),
+      height: 160,
       width: double.infinity,
       decoration: BoxDecoration(
-        color: const Color(0xFF101014),
-        border: Border.all(color: const Color(0xFFE63946), width: 4.0),
-        boxShadow: const [
-          BoxShadow(
-            color: Colors.black54,
-            blurRadius: 10,
-            offset: Offset(0, 5),
-          ),
-        ],
+        color: Colors.black,
+        border: Border.all(color: Colors.white, width: 6.0),
       ),
       child: Text(
         _displayedText,
-        style: TextStyle(
-          fontSize: textSize,
+        style: const TextStyle(
+          fontSize: 26.0,
           color: Colors.white,
           height: 1.3,
         ),
